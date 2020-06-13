@@ -68,6 +68,7 @@
       this.webBrowserMain = new System.Windows.Forms.WebBrowser();
       this.textBoxUrl = new System.Windows.Forms.TextBox();
       this.buttonGo = new System.Windows.Forms.Button();
+      this.textBoxWebRequestResult = new System.Windows.Forms.TextBox();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -372,7 +373,7 @@
       this.webBrowserMain.Location = new System.Drawing.Point(12, 73);
       this.webBrowserMain.MinimumSize = new System.Drawing.Size(20, 20);
       this.webBrowserMain.Name = "webBrowserMain";
-      this.webBrowserMain.Size = new System.Drawing.Size(862, 613);
+      this.webBrowserMain.Size = new System.Drawing.Size(862, 465);
       this.webBrowserMain.TabIndex = 2;
       // 
       // textBoxUrl
@@ -382,7 +383,7 @@
       this.textBoxUrl.Size = new System.Drawing.Size(823, 20);
       this.textBoxUrl.TabIndex = 3;
       this.textBoxUrl.Text = "https://www.dictionnaire-academie.fr/article/A9A2810";
-      this.textBoxUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUrl_KeyDown);
+      this.textBoxUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxUrl_KeyDown);
       // 
       // buttonGo
       // 
@@ -392,12 +393,23 @@
       this.buttonGo.TabIndex = 4;
       this.buttonGo.Text = "GO";
       this.buttonGo.UseVisualStyleBackColor = true;
+      this.buttonGo.Click += new System.EventHandler(this.ButtonGo_Click);
+      // 
+      // textBoxWebRequestResult
+      // 
+      this.textBoxWebRequestResult.Location = new System.Drawing.Point(13, 576);
+      this.textBoxWebRequestResult.Multiline = true;
+      this.textBoxWebRequestResult.Name = "textBoxWebRequestResult";
+      this.textBoxWebRequestResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+      this.textBoxWebRequestResult.Size = new System.Drawing.Size(823, 131);
+      this.textBoxWebRequestResult.TabIndex = 5;
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1183, 735);
+      this.Controls.Add(this.textBoxWebRequestResult);
       this.Controls.Add(this.buttonGo);
       this.Controls.Add(this.textBoxUrl);
       this.Controls.Add(this.webBrowserMain);
@@ -457,5 +469,6 @@
     private System.Windows.Forms.WebBrowser webBrowserMain;
     private System.Windows.Forms.TextBox textBoxUrl;
     private System.Windows.Forms.Button buttonGo;
+    private System.Windows.Forms.TextBox textBoxWebRequestResult;
   }
 }

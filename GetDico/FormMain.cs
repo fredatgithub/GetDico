@@ -1,10 +1,12 @@
 #define DEBUG
 using GetDico.Properties;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -712,13 +714,63 @@ namespace GetDico
       }
     }
 
-    private void textBoxUrl_KeyDown(object sender, KeyEventArgs e)
+    private void TextBoxUrl_KeyDown(object sender, KeyEventArgs e)
     {
       if (e.KeyCode == Keys.Enter)
       {
         // start http request
 
       }
+    }
+
+    private void ButtonGo_Click(object sender, EventArgs e)
+    {
+      if (textBoxUrl.Text.Length != 0)
+      {
+        //webBrowser1.Navigate("https://www.microsoft.com");
+        webBrowserMain.Navigate(textBoxUrl.Text);
+        textBoxWebRequestResult.Text = GetWebClientString(textBoxUrl.Text);
+        /*
+         *search for div s_DivNum 
+         *
+         * */
+
+        // From Web
+        var url = "http://html-agility-pack.net/";
+        var web = new HtmlWeb();
+        var doc = web.Load(url);
+      }
+
+    }
+
+    public static string GetWebClientString(string url = "http://www.google.com/")
+    {
+      // create a new instance of WebClient
+      WebClient client = new WebClient();
+      string result = string.Empty;
+      // set the user agent to IE6
+      client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.0.3705;)");
+      try
+      {
+        // actually execute the GET request
+        string ret = client.DownloadString(url);
+
+        // ret now contains the contents of the webpage
+        //Console.WriteLine("First 256 bytes of response: " + ret.Substring(0, 265));
+        result = ret;
+      }
+      catch (WebException)
+      {
+        // WebException.Status holds useful information
+        //Console.WriteLine(we.Message + "\n" + we.Status.ToString());
+      }
+      catch (NotSupportedException)
+      {
+        // other errors
+        //Console.WriteLine(ne.Message);
+      }
+
+      return result;
     }
   }
 }
