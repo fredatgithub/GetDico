@@ -65,7 +65,7 @@
       this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+      this.webBrowserMain = new System.Windows.Forms.WebBrowser();
       this.textBoxUrl = new System.Windows.Forms.TextBox();
       this.buttonGo = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
@@ -367,13 +367,13 @@
       this.aboutToolStripMenuItem.Text = "À &propos de...";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
       // 
-      // webBrowser1
+      // webBrowserMain
       // 
-      this.webBrowser1.Location = new System.Drawing.Point(12, 73);
-      this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-      this.webBrowser1.Name = "webBrowser1";
-      this.webBrowser1.Size = new System.Drawing.Size(862, 613);
-      this.webBrowser1.TabIndex = 2;
+      this.webBrowserMain.Location = new System.Drawing.Point(12, 73);
+      this.webBrowserMain.MinimumSize = new System.Drawing.Size(20, 20);
+      this.webBrowserMain.Name = "webBrowserMain";
+      this.webBrowserMain.Size = new System.Drawing.Size(862, 613);
+      this.webBrowserMain.TabIndex = 2;
       // 
       // textBoxUrl
       // 
@@ -400,7 +400,7 @@
       this.ClientSize = new System.Drawing.Size(1183, 735);
       this.Controls.Add(this.buttonGo);
       this.Controls.Add(this.textBoxUrl);
-      this.Controls.Add(this.webBrowser1);
+      this.Controls.Add(this.webBrowserMain);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
       this.Margin = new System.Windows.Forms.Padding(2);
@@ -454,7 +454,7 @@
     private System.Windows.Forms.ToolStripMenuItem SmallToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem MediumToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem LargeToolStripMenuItem;
-    private System.Windows.Forms.WebBrowser webBrowser1;
+    private System.Windows.Forms.WebBrowser webBrowserMain;
     private System.Windows.Forms.TextBox textBoxUrl;
     private System.Windows.Forms.Button buttonGo;
   }
