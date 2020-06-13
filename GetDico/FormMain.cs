@@ -10,6 +10,7 @@ using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace GetDico
 {
@@ -739,8 +740,18 @@ namespace GetDico
         var url = "http://html-agility-pack.net/";
         var web = new HtmlWeb();
         var doc = web.Load(url);
-      }
+        var htmlDoc = new HtmlDocument();
+        string zeText = htmlDoc.Text;
+        htmlDoc.LoadHtml("https://www.dictionnaire-academie.fr/article/A9A2810");
 
+        var htmlNodes = htmlDoc.DocumentNode.SelectNodes("s_DivNum");
+
+        foreach (var node in htmlNodes)
+        {
+
+          Console.WriteLine(node.Attributes["value"].Value);
+        }
+      }
     }
 
     public static string GetWebClientString(string url = "http://www.google.com/")
