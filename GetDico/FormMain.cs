@@ -779,6 +779,10 @@ namespace GetDico
       var htmlDocument = new HtmlDocument();
       htmlDocument.LoadHtml(text);
       var def = htmlDocument.DocumentNode.SelectNodes("//s_DivNum"); // balise
+      if (def != null)
+      {
+        result = def.ToString();
+      }
 
       return result;
     }
