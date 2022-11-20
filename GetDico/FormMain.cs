@@ -737,21 +737,50 @@ namespace GetDico
          * */
 
         // From Web
-        var url = "http://html-agility-pack.net/";
+        //var url = "http://html-agility-pack.net/";
+        var url = "https://www.dictionnaire-academie.fr/article/A9A2811";
         var web = new HtmlWeb();
         var doc = web.Load(url);
+        var parsedText = doc.ParsedText;
+        string definitions = string.Empty;
+        string balise = "s_DivNum";
+        if (parsedText != null)
+        {
+          definitions = Extract(parsedText, balise);
+
+        }
+
         var htmlDoc = new HtmlDocument();
         string zeText = htmlDoc.Text;
         htmlDoc.LoadHtml("https://www.dictionnaire-academie.fr/article/A9A2810");
 
-        var htmlNodes = htmlDoc.DocumentNode.SelectNodes("s_DivNum");
+        var htmlNodes = htmlDoc.DocumentNode.SelectNodes("//s_DivNum");
 
-        foreach (var node in htmlNodes)
+        if (htmlNodes != null)
         {
-
-          Console.WriteLine(node.Attributes["value"].Value);
+          foreach (var node in htmlNodes)
+          {
+            Console.WriteLine(node.Attributes["value"].Value);
+          }
         }
+
       }
+    }
+
+    private string Extract(string parsedText, string balise)
+    {
+      string result = string.Empty;
+      if (string.IsNullOrEmpty(parsedText))
+      {
+        return result;
+      }
+
+      var text = parsedText;
+      var htmlDocument = new HtmlDocument();
+      htmlDocument.LoadHtml(text);
+      var def = htmlDocument.DocumentNode.SelectNodes("//s_DivNum"); // balise
+
+      return result;
     }
 
     public static string GetWebClientString(string url = "http://www.google.com/")
